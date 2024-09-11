@@ -29,10 +29,10 @@ int main() {
     for (int i = 0; i < n; i++) {
         customer[i] -= cap_num;
         ans++;
-        while(customer[i] > 0) {
-            customer[i] -= mem_number;
-            ans++;
-        }
+        if (customer[i] <= 0) continue;
+        
+        if (customer[i] % mem_number == 0) ans += customer[i] / mem_number;
+        else ans += customer[i] / mem_number + 1;
     }
     
     cout << ans;
